@@ -1,10 +1,10 @@
 # Misingi ya Kuandika JavaScript Inayofanana na Kawaida
 
-<!-- * Allan Alton [@AllanAlton5](https://x.com/AllanAlton5), [github](https://github.com/alton47)
+<!-- * 
 Added Swahili translation of the Idiomatic.js guide 
 This PR adds a Swahili translation of the Idiomatic.js guide, located in the translations folder. -->
 
-## Hii ni nyaraka inayoendelea, na mawazo mapya ya kuboresha msimbo yanakaribishwa kila wakati. Changia: fork, clone, branch, commit, push, pull request.
+## Hii ni nyaraka inayoendelea, na mawazo mapya ya kuboresha msimbo yanakaribishwa kila wakati. Kuchangia: fork, clone, branch, commit, push, pull request.
 
 * Rick Waldron [@rwaldron](http://twitter.com/rwaldron), [github](https://github.com/rwaldron)
 * Mathias Bynens [@mathias](http://twitter.com/mathias), [github](https://github.com/mathiasbynens)
@@ -41,6 +41,7 @@ This PR adds a Swahili translation of the Idiomatic.js guide, located in the tra
 * Stephane Moreau [github](https://github.com/stmoreau)  
 * Boris Nekezov [github](https://github.com/boris-nekezov)
 * Akshat Joshi [@akshat_joshi](http://twitter.com/akshat_joshi), [github](https://https://github.com/akshatjoshii) 
+* Allan Alton [github](https://github.com/alton47)
 
 
 ## Msimbo wowote katika msimbo wa programu unapaswa kuonekana kama mtu mmoja alivyoiandika, haijalishi ni watu wangapi waliotoa mchango.
