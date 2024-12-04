@@ -148,6 +148,114 @@ Miradi _lazima_ ijumuishe aina yoyote ya majaribio ya kitengo, rejea, utekelezaj
 
 
 
+## Utangulizi
+
+Sehemu zifuatazo zinapanga _mwongozo wa mtindo_ wa maendeleo ya JavaScript wa kisasa na hazikusudiwi kuwa za kuamuru. Kile kilicho muhimu zaidi cha kujua ni **sheria ya mfuatano wa mtindo wa msimbo**. Chochote unachochagua kama mtindo kwa mradi wako kinapaswa kuzingatiwa kama sheria. Linki kwa hati hii kama taarifa ya kujitolea kwa mradi wako kwa mfuatano wa mtindo wa msimbo, usomaji na kudumisha.
+
+## Ilani ya Mtindo wa Idiomatic
+
+1. <a name="whitespace">Nafasi Nyeupe</a>
+  - Kamwe usichanganye spaces na tabs.
+  - Unapoanza mradi, kabla ya kuandika msimbo wowote, chagua kati ya indentations za laini (spaces) au tabs halisi, fikiria hii kama **sheria**.
+      - Kwa usomaji, ninapendekeza kila wakati kuweka saizi ya indent ya mhariri wako kuwa herufi mbili &mdash; hii inamaanisha nafasi mbili au nafasi mbili zinazoashiria tab halisi.
+  - Ikiwa mhariri wako unayekubali, kila wakati fanya kazi na mipangilio ya "onyesho la visivyoonekana" ikiwa imewashwa. Faida za tabia hii ni:
+      - Utekelezaji wa mfuatano
+      - Kuondoa nafasi za mwisho wa mstari
+      - Kuondoa nafasi za mstari mweupe
+      - Mabadiliko na tofauti zinazozidi kusomeka
+  - Tumia [Editorconfig](http://editorconfig.org/) inapowezekana. Inasaidia IDE nyingi na inashughulikia mipangilio mingi ya nafasi nyeupe.
+
+2. <a name="spacing">Sintaksia Nzuri</a>
+
+    A. Parens, Braces, Mivutano ya Mistari
+
+    ```javascript
+
+    // if/else/for/while/try kila wakati huwa na nafasi, braces na span mistari mingi
+    // hii inahimiza usomaji
+
+    // 2.A.1.1
+    // Mifano ya sintaksia iliyojazana sana
+
+    if(condition) doSomething();
+
+    while(condition) iterating++;
+
+    for(var i=0;i<100;i++) someIterativeFn();
+
+
+    // 2.A.1.1
+    // Tumia nafasi ili kuhamasisha usomaji
+
+    if ( condition ) {
+      // statements
+    }
+
+    while ( condition ) {
+      // statements
+    }
+
+    for ( var i = 0; i < 100; i++ ) {
+      // statements
+    }
+
+    // Bora zaidi:
+
+    var i,
+      length = 100;
+
+    for ( i = 0; i < length; i++ ) {
+      // statements
+    }
+
+    // Au...
+
+    var i = 0,
+      length = 100;
+
+    for ( ; i < length; i++ ) {
+      // statements
+    }
+
+    var prop;
+
+    for ( prop in object ) {
+      // statements
+    }
+
+
+    if ( true ) {
+      // statements
+    } else {
+      // statements
+    }
+    ```
+
+
+    B. Miamala, Matangazo, Funguo (Jina, Ufafanuzi, Kituo)
+
+    ```javascript
+
+    // 2.B.1.1
+    // Vigezo
+    var foo = "bar",
+      num = 1,
+      undef;
+
+    // Ufafanuzi wa herufi:
+    var array = [],
+      object = {};
+
+
+    // 2.B.1.2
+    // Kutumia `var` moja kwa kila scope (function) au `var` moja kwa kila variable,
+    // inakuza usomaji na inafanya orodha yako ya matangazo kuwa safi isiyo na msongamano.
+    // Kutumia `var` moja kwa kila variable unaweza kuchukua udhibiti zaidi wa matoleo yako
+    // na inafanya iwe rahisi kupanga mistari.
+    // `Var` moja kwa scope inafanya iwe rahisi kugundua variables zisizotangazwa
+    // ambazo zinaweza kuwa globali zisizo na majina.
+    // Chagua bora kwa mradi wako na kamwe usizichanganye.
+
 
 
 
