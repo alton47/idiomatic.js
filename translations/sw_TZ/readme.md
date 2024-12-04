@@ -1217,6 +1217,98 @@ Sehemu zifuatazo zinapanga _mwongozo wa mtindo_ wa maendeleo ya JavaScript wa ki
     delegator( "alpha", 1, 2, 3, 4, 5 );
     // [ "Alpha", 5 ] 
 
+    // Kwa kweli, hoja ya `case` inaweza kwa urahisi kutegemea
+    // hali nyingine yoyote isiyo ya lazima.
+
+    var caseKey, someUserInput;
+
+    // Inaweza kuwa ni aina fulani ya ingizo la fomu?
+    someUserInput = 9;
+
+    if ( someUserInput > 10 ) {
+      caseKey = "alpha";
+    } else {
+      caseKey = "beta";
+    }
+
+    // au...
+
+    caseKey = someUserInput > 10 ? "alpha" : "beta";
+
+    // Na kisha...
+
+    delegator( caseKey, someUserInput );
+    // [ "Beta", 1 ]
+
+    // Na kwa hakika...
+
+    delegator();
+    // [ "Default", 0 ]
+
+    ```
+
+    B. Kurudi mapema kunakuza ufanisi wa msimbo na tofauti ndogo ya utendaji
+
+    ```javascript
+
+    // 7.B.1.1
+    // Mbaya:
+    function returnLate( foo ) {
+      var ret;
+
+      if ( foo ) {
+        ret = "foo";
+      } else {
+        ret = "quux";
+      }
+      return ret;
+    }
+
+    // Nzuri:
+
+    function returnEarly( foo ) {
+
+      if ( foo ) {
+        return "foo";
+      }
+      return "quux";
+    }
+
+    ```
+
+8. <a name="native">Vitu vya Asili & Vitu vya Mgeni</a>
+
+    Kanuni ya msingi hapa ni:
+
+    ### Usifanye vitu vya kijinga na kila kitu kitakuwa sawa.
+
+    Ili kuimarisha wazo hili, tafadhali angalia uwasilishaji ufuatao:
+
+    #### “Kila Kitu Kinapewa Ruhusa: Kupanua Built-ins” na Andrew Dupont (JSConf2011, Portland, Oregon)
+
+    https://www.youtube.com/watch?v=xL3xCO7CLNM
+
+9. <a name="comments">Maoni</a>
+
+    #### Line moja juu ya msimbo unaohusiana
+    #### Mstari mwingi ni mzuri
+    #### Maoni ya mwisho wa mstari hayaruhusiwi!
+    #### Mtindo wa JSDoc ni mzuri, lakini unahitaji muda mwingi wa uwekezaji
+
+10. <a name="language">Msimbo wa Lugha Moja</a>
+
+    Programu inapaswa kuandikwa kwa lugha moja, iwe lugha hiyo ni ipi, kama inavyosema mtunzaji au watawala wa mradi.
+
+## Kiambatisho
+
+### Comma Kwanza.
+
+Mradi wowote unaorejelea hati hii kama mwongozo wake wa mtindo haukubali muundo wa msimbo wa comma kwanza, isipokuwa ikiwa imeainishwa vinginevyo na mwandishi wa mradi huo.
+
+----------
+
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Principles of Writing Consistent, Idiomatic JavaScript</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/rwldrn/idiomatic.js" property="cc:attributionName" rel="cc:attributionURL">Rick Waldron and Contributors</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/rwldrn/idiomatic.js" rel="dct:source">github.com/rwldrn/idiomatic.js</a>. 
+
 
 
 
