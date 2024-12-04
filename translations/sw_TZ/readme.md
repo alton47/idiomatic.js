@@ -1079,6 +1079,144 @@ Sehemu zifuatazo zinapanga _mwongozo wa mtindo_ wa maendeleo ya JavaScript wa ki
 
     ```
 
+    Kama njia ya mwisho, tengeneza kifupi cha `this` kwa kutumia `self` kama Kitambulisho. Hii ni rahisi kusababisha makosa na inapaswa kuepukwa kila inapowezekana.
+
+    ```javascript
+
+    // 6.B.3
+
+    function Device( opts ) {
+      var self = this;
+
+      this.value = null;
+
+      stream.read( opts.path, function( data ) {
+
+        self.value = data;
+
+      });
+
+      setInterval(function() {
+
+        self.emit("event");
+
+      }, opts.freq || 100 );
+    }
+
+    ```
+
+    C. Tumia `thisArg`
+
+    Mbinu kadhaa za prototipu za ES 5.1 zilizojengwa zinakuja na saini maalum ya `thisArg`, ambayo inapaswa kutumika kila inapowezekana
+
+    ```javascript
+
+    // 6.C.1
+
+    var obj;
+
+    obj = { f: "foo", b: "bar", q: "qux" };
+
+    Object.keys( obj ).forEach(function( key ) {
+
+      // |this| sasa inahusiana na `obj`
+
+      console.log( this[ key ] );
+
+    }, obj ); // <-- hoja ya mwisho ni `thisArg`
+
+    // Inachapisha...
+
+    // "foo"
+    // "bar"
+    // "qux"
+
+    ```
+
+    `thisArg` inaweza kutumika na `Array.prototype.every`, `Array.prototype.forEach`, `Array.prototype.some`, `Array.prototype.map`, `Array.prototype.filter`
+
+7. <a name="misc">Misc</a>
+
+    Sehemu hii itatumika kuonyesha mawazo na dhana ambazo hazipaswi kuchukuliwa kama kanuni, bali badala yake zipo ili kuhamasisha kuuliza mbinu ili kupata njia bora za kufanya kazi za kawaida za uandishi wa JavaScript.
+
+    A. Kutumia `switch` inapaswa kuepukwa, uchambuzi wa mbinu za kisasa utaharamisha kazi zenye taarifa za switch
+
+    Kunaonekana kuwa na maboresho makubwa katika utekelezaji wa taarifa za `switch` katika toleo jipya la Firefox na Chrome.
+    http://jsperf.com/switch-vs-object-literal-vs-module
+
+    Maboresho muhimu yanaweza kuonekana hapa pia:
+    https://github.com/rwldrn/idiomatic.js/issues/13
+
+    ```javascript
+
+    // 7.A.1.1
+    // Mfano wa taarifa ya switch
+
+    switch( foo ) {
+      case "alpha":
+        alpha();
+        break;
+      case "beta":
+        beta();
+        break;
+      default:
+        // kitu cha kutumika kama default
+        break;
+    }
+
+    // 7.A.1.2
+    // Njia mbadala inayounga mkono kuunganishwa na utumizi tena ni kutumia
+    // kitu cha kuhifadhi "cases" na kazi ya kutuma:
+
+    var cases, delegator;
+
+    // Marejeo ya mfano kwa ajili ya maelezo tu.
+    cases = {
+      alpha: function() {
+        // tamko
+        // kurudisha
+        return [ "Alpha", arguments.length ];
+      },
+      beta: function() {
+        // tamko
+        // kurudisha
+        return [ "Beta", arguments.length ];
+      },
+      _default: function() {
+        // tamko
+        // kurudisha
+        return [ "Default", arguments.length ];
+      }
+    };
+
+    delegator = function() {
+      var args, key, delegate;
+
+      // Geuza orodha ya hoja kuwa orodha
+      args = [].slice.call( arguments );
+
+      // hamasisha funguo za kesi kutoka kwa hoja
+      key = args.shift();
+
+      // Weka mtendaji wa kesi ya default
+      delegate = cases._default;
+
+      // Tafuta njia ya kutuma kazi
+      if ( cases.hasOwnProperty( key ) ) {
+        delegate = cases[ key ];
+      }
+
+      // Hoja ya scope inaweza kuwekwa kuwa kitu maalum,
+      // katika kesi hii, |null| itatosha
+      return delegate.apply( null, args );
+    };
+
+    // 7.A.1.3
+    // Fanya API ya 7.A.1.2 ifanye kazi:
+
+    delegator( "alpha", 1, 2, 3, 4, 5 );
+    // [ "Alpha", 5 ] 
+
 
 
 
