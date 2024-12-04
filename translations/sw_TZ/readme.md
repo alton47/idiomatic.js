@@ -416,6 +416,241 @@ Sehemu zifuatazo zinapanga _mwongozo wa mtindo_ wa maendeleo ya JavaScript wa ki
     }
 
     ```
+    D. Mshikamano Daima Ushindi
+
+    Katika sehemu 2.A-2.C, kanuni za whitespace zimeanzishwa kama mapendekezo yenye lengo rahisi na kubwa: mshikamano.
+    Ni muhimu kutambua kwamba mapendeleo ya muundo, kama vile "whitespace ya ndani" yanapaswa kuzingatiwa kama hiari, lakini mtindo mmoja tu unapaswa kuwepo katika chanzo chote cha mradi wako.
+
+    ```javascript
+
+    // 2.D.1.1
+
+    if (condition) {
+      // maelekezo
+    }
+
+    while (condition) {
+      // maelekezo
+    }
+
+    for (var i = 0; i < 100; i++) {
+      // maelekezo
+    }
+
+    if (true) {
+      // maelekezo
+    } else {
+      // maelekezo
+    }
+
+    ```
+
+    E. Manukuu
+
+    Ikiwa unapendelea manukuu ya moja au mbili, haipaswi kuwa na maana, hakuna tofauti katika jinsi JavaScript inavyoyachakata. Kilicho **BILA SHAKA KINAHITAJIKA** kutekelezwa ni mshikamano. **Usichanganye manukuu katika mradi mmoja. Chagua mtindo mmoja na ufuate.**
+
+    F. Mwisho wa Mistari na Mistari Mitupu
+
+    Whitespace inaweza kuharibu tofauti na kufanya mabadiliko kuwa vigumu kusomeka. Fikiria kutumia hook ya pre-commit inayotoa nafasi ya mwisho ya mstari na nafasi tupu kwenye mistari mitupu kiotomatiki.
+
+3. <a name="type">Uhakiki wa Aina (Kwa Hisani ya Miongozo ya Mtindo ya jQuery Core)</a>
+
+    A. Aina Halisi
+
+    String:
+
+        typeof variable === "string"
+
+    Namba:
+
+        typeof variable === "number"
+
+    Boolean:
+
+        typeof variable === "boolean"
+
+    Kitu:
+
+        typeof variable === "object"
+
+    Orodha:
+
+        Array.isArray( arrayLikeObject )
+        (pale inapowezekana)
+
+    Node:
+
+        elem.nodeType === 1
+
+    null:
+
+        variable === null
+
+    null au undefined:
+
+        variable == null
+
+    undefined:
+
+      Variables za Globali:
+
+        typeof variable === "undefined"
+
+      Variables za Kidahili:
+
+        variable === undefined
+
+      Mali:
+
+        object.prop === undefined
+        object.hasOwnProperty( prop )
+        "prop" in object
+
+    B. Aina Zilizochanganywa
+
+    Fikiria athari za yafuatayo...
+
+    Kutolewa kwa HTML hii:
+
+    ```html
+
+    <input type="text" id="foo-input" value="1">
+
+    ```
+
+
+    ```javascript
+
+    // 3.B.1.1
+
+    // `foo` imetangazwa na thamani `0` na aina yake ni `number`
+    var foo = 0;
+
+    // typeof foo;
+    // "number"
+    ...
+
+    // Mahali fulani baadaye kwenye msimbo wako, unahitaji kuboresha `foo`
+    // kwa thamani mpya inayotokana na kipengele cha input
+
+    foo = document.getElementById("foo-input").value;
+
+    // Ikiwa ungeweza kupima `typeof foo` sasa, matokeo yangekuwa `string`
+    // Hii inamaanisha kwamba ikiwa ungekuwa na mantiki inayopima `foo` kama:
+
+    if ( foo === 1 ) {
+
+      importantTask();
+
+    }
+
+    // `importantTask()` haitoanzishwa, ingawa `foo` ina thamani ya "1"
+
+
+    // 3.B.1.2
+
+    // Unaweza kuepuka matatizo kwa kutumia ubadilishaji mwerevu na operator za unary + au -:
+
+    foo = +document.getElementById("foo-input").value;
+    //    ^ operator ya unary + itabadilisha kipengele cha kulia cha operand kuwa namba
+
+    // typeof foo;
+    // "number"
+
+    if ( foo === 1 ) {
+
+      importantTask();
+
+    }
+
+    // `importantTask()` itaitwa
+    ```
+
+    Hapa kuna baadhi ya kesi za kawaida pamoja na ubadilishaji:
+
+    ```javascript
+
+    // 3.B.2.1
+
+    var number = 1,
+      string = "1",
+      bool = false;
+
+    number;
+    // 1
+
+    number + "";
+    // "1"
+
+    string;
+    // "1"
+
+    +string;
+    // 1
+
+    +string++;
+    // 1
+
+    string;
+    // 2
+
+    bool;
+    // false
+
+    +bool;
+    // 0
+
+    bool + "";
+    // "false"
+    ```
+
+
+    ```javascript
+    // 3.B.2.2
+
+    var number = 1,
+      string = "1",
+      bool = true;
+
+    string === number;
+    // false
+
+    string === number + "";
+    // true
+
+    +string === number;
+    // true
+
+    bool === number;
+    // false
+
+    +bool === number;
+    // true
+
+    bool === string;
+    // false
+
+    bool === !!string;
+    // true
+    ```
+
+    ```javascript
+    // 3.B.2.3
+
+    var array = [ "a", "b", "c" ];
+
+    !!~array.indexOf("a");
+    // true
+
+    !!~array.indexOf("b");
+    // true
+
+    !!~array.indexOf("c");
+    // true
+
+    !!~array.indexOf("d");
+    // false
+
 
 
 
