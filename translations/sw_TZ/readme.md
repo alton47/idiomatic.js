@@ -893,6 +893,193 @@ Sehemu zifuatazo zinapanga _mwongozo wa mtindo_ wa maendeleo ya JavaScript wa ki
     ```
 
 
+6. <a name="naming">Utoaji wa Majina</a>
+
+    A. Wewe si mkompesa wa nambari za binadamu, hivyo usijaribu kuwa mmoja.
+
+    Ifuatayo ni mfano wa nambari zenye majina mabaya:
+
+    ```javascript
+
+    // 6.A.1.1
+    // Mfano wa nambari zenye majina mabaya
+
+    function q(s) {
+      return document.querySelectorAll(s);
+    }
+    var i,a=[],els=q("#foo");
+    for(i=0;i<els.length;i++){a.push(els[i]);}
+    ```
+
+    Bila shaka, umeandika nambari kama hii - tunatarajia hii kumalizika leo.
+
+    Hapa kuna kipengele sawa cha mantiki, lakini na majina rafiki zaidi, yenye kufikirika (na muundo unaosomeka):
+
+    ```javascript
+
+    // 6.A.2.1
+    // Mfano wa nambari zenye majina bora
+
+    function query( selector ) {
+      return document.querySelectorAll( selector );
+    }
+
+    var idx = 0,
+      elements = [],
+      matches = query("#foo"),
+      length = matches.length;
+
+    for ( ; idx < length; idx++ ) {
+      elements.push( matches[ idx ] );
+    }
+
+    ```
+
+    Vidokezo vichache vya majina:
+
+    ```javascript
+
+    // 6.A.3.1
+    // Utoaji wa majina kwa nyakati
+
+    `dog` ni nyakati
+
+
+    // 6.A.3.2
+    // Utoaji wa majina kwa orodha
+
+    `dogs` ni orodha ya nyakati za `dog`
+
+
+    // 6.A.3.3
+    // Utoaji wa majina kwa kazi, vitu, mifano, nk.
+
+    camelCase; kazi na matamko ya var
+
+
+    // 6.A.3.4
+    // Utoaji wa majina kwa wahusika, mifano, nk.
+
+    PascalCase; kazi ya kifasihi
+
+
+    // 6.A.3.5
+    // Utoaji wa majina kwa mifumo ya kawaida
+
+    rDesc = //;
+
+
+    // 6.A.3.6
+    // Kutoka kwa Mwongozo wa Mtindo wa Google Closure Library
+
+    functionNamesLikeThis;
+    variableNamesLikeThis;
+    ConstructorNamesLikeThis;
+    EnumNamesLikeThis;
+    methodNamesLikeThis;
+    SYMBOLIC_CONSTANTS_LIKE_THIS;
+
+    ```
+
+    B. Uso wa `this`
+
+    Zaidi ya matumizi ya kawaida ya `call` na `apply`, kila wakati upendelea `.bind( this )` au mbadala wa kithesisi, kwa kuunda tafsiri za `BoundFunction` kwa wito baadaye. Tumia hila ya neno tu wakati hakuna chaguo bora.
+
+    ```javascript
+
+    // 6.B.1
+    function Device( opts ) {
+
+      this.value = null;
+
+      // fungua mtiririko wa asenkroni,
+      // hii itaitwa mara kwa mara
+      stream.read( opts.path, function( data ) {
+
+        // Sasisha thamani ya sasa ya mfano huu
+        // na thamani ya hivi punde kutoka kwa
+        // mtiririko wa data
+        this.value = data;
+
+      }.bind(this) );
+
+      // Punguza mzunguko wa matukio yanayotolewa kutoka
+      // kwa kifaa hiki cha mfano
+      setInterval(function() {
+
+        // Toa tukio lililozuiwa
+        this.emit("event");
+
+      }.bind(this), opts.freq || 100 );
+    }
+
+    // Fikiria kama tumepokea EventEmitter ;)
+
+    ```
+
+    Wakati haipo, mbadala za kithesisi kwa `.bind` zinapatikana katika maktaba nyingi za kisasa za JavaScript.
+
+
+    ```javascript
+    // 6.B.2
+
+    // eg. lodash/underscore, _.bind()
+    function Device( opts ) {
+
+      this.value = null;
+
+      stream.read( opts.path, _.bind(function( data ) {
+
+        this.value = data;
+
+      }, this) );
+
+      setInterval(_.bind(function() {
+
+        this.emit("event");
+
+      }, this), opts.freq || 100 );
+    }
+
+    // eg. jQuery.proxy
+    function Device( opts ) {
+
+      this.value = null;
+
+      stream.read( opts.path, jQuery.proxy(function( data ) {
+
+        this.value = data;
+
+      }, this) );
+
+      setInterval( jQuery.proxy(function() {
+
+        this.emit("event");
+
+      }, this), opts.freq || 100 );
+    }
+
+    // eg. dojo.hitch
+    function Device( opts ) {
+
+      this.value = null;
+
+      stream.read( opts.path, dojo.hitch( this, function( data ) {
+
+        this.value = data;
+
+      }) );
+
+      setInterval( dojo.hitch( this, function() {
+
+        this.emit("event");
+
+      }), opts.freq || 100 );
+    }
+
+    ```
+
+
 
 
 
