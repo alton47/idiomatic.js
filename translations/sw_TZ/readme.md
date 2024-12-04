@@ -651,6 +651,247 @@ Sehemu zifuatazo zinapanga _mwongozo wa mtindo_ wa maendeleo ya JavaScript wa ki
     !!~array.indexOf("d");
     // false
 
+    // Kumbuka kwamba yaliyo juu yanapaswa kuchukuliwa kuwa "ya kisanaa zaidi"
+    // Epuka njia ngumu na ulinganishe moja kwa moja thamani inayorejeshwa ya
+    // indexOf, kama:
+
+    if ( array.indexOf( "a" ) >= 0 ) {
+      // ...
+    }
+    ```
+
+    ```javascript
+    // 3.B.2.4
+
+
+    var num = 2.5;
+
+    parseInt( num, 10 );
+
+    // ni sawa na...
+
+    ~~num;
+
+    num >> 0;
+
+    num >>> 0;
+
+    // Zote zinarudisha 2
+
+
+    // Lakini kumbuka, nambari hasi zitachukuliwa tofauti...
+
+    var neg = -2.5;
+
+    parseInt( neg, 10 );
+
+    // ni sawa na...
+
+    ~~neg;
+
+    neg >> 0;
+
+    // Zote zinarudisha -2
+    // Hata hivyo...
+
+    neg >>> 0;
+
+    // Itarudisha 4294967294
+
+
+
+
+    ```
+
+4. <a name="cond">Uthibitisho wa Masharti</a>
+
+    ```javascript
+
+    // 4.1.1
+    // Wakati unathibitisha tu kuwa orodha ina urefu,
+    // badala ya hii:
+    if ( array.length > 0 ) ...
+
+    // ...thibitisha ukweli wake, kama hii:
+    if ( array.length ) ...
+
+
+    // 4.1.2
+    // Wakati unathibitisha tu kuwa orodha ni tupu,
+    // badala ya hii:
+    if ( array.length === 0 ) ...
+
+    // ...thibitisha ukweli wake, kama hii:
+    if ( !array.length ) ...
+
+
+    // 4.1.3
+    // Wakati unathibitisha tu kuwa string sio tupu,
+    // badala ya hii:
+    if ( string !== "" ) ...
+
+    // ...thibitisha ukweli wake, kama hii:
+    if ( string ) ...
+
+
+    // 4.1.4
+    // Wakati unathibitisha tu kuwa string _ni_ tupu,
+    // badala ya hii:
+    if ( string === "" ) ...
+
+    // ...thibitisha kuto-uwepo wake, kama hii:
+    if ( !string ) ...
+
+
+    // 4.1.5
+    // Wakati unathibitisha tu kuwa rejea ni kweli,
+    // badala ya hii:
+    if ( foo === true ) ...
+
+    // ...thibitisha kama unavyomaanisha, tumia uwezo wa kujengwa:
+    if ( foo ) ...
+
+
+    // 4.1.6
+    // Wakati unathibitisha kuwa rejea ni uongo,
+    // badala ya hii:
+    if ( foo === false ) ...
+
+    // ...tumia kukanusha ili kulazimisha uthibitisho wa kweli
+    if ( !foo ) ...
+
+    // ...Kuwa makini, hii pia italingana: 0, "", null, undefined, NaN
+    // Ikiwa _LAZIMA_ utesti kwa uongo wa boolean, basi tumia
+    if ( foo === false ) ...
+
+
+    // 4.1.7
+    // Wakati unathibitisha tu rejea inayoweza kuwa null au undefined, lakini SIO uongo, "", au 0,
+    // badala ya hii:
+    if ( foo === null || foo === undefined ) ...
+
+    // ...tumia nguvu ya mabadiliko ya aina ya ==, kama hii:
+    if ( foo == null ) ...
+
+    // Kumbuka, kutumia == italingana na `null` kwa BOTH `null` na `undefined`
+    // lakini sio `false`, "" au 0
+    null == undefined
+
+    ```
+    DAIMA thibitisha kwa matokeo bora, sahihi zaidi - yaliyo juu ni miongozo, sio dini.
+
+    ```javascript
+
+    // 4.2.1
+    // Maelezo ya mabadiliko ya aina na uthibitisho
+
+    // Epuka `===` kuliko `==` (isipokuwa kesi inahitaji tathmini ya aina huru)
+
+    // === haitumii mabadiliko ya aina, ambayo inamaanisha kuwa:
+
+    "1" === 1;
+    // false
+
+    // == inatumia mabadiliko ya aina, ambayo inamaanisha kuwa:
+
+    "1" == 1;
+    // true
+
+
+    // 4.2.2
+    // Booleans, Ukweli & Uongo
+
+    // Booleans:
+    true, false
+
+    // Ukweli:
+    "foo", 1
+
+    // Uongo:
+    "", 0, null, undefined, NaN, void 0
+
+    ```
+
+
+5. <a name="practical">Mtindo wa Vitendo</a>
+
+    ```javascript
+
+    // 5.1.1
+    // Moduli ya Vitendo
+
+    (function( global ) {
+      var Module = (function() {
+
+        var data = "siri";
+
+        return {
+          // Huu ni sifa ya booleans
+          bool: true,
+          // Thamani ya string
+          string: "string",
+          // Sifa ya orodha
+          array: [ 1, 2, 3, 4 ],
+          // Sifa ya kitu
+          object: {
+            lang: "en-Us"
+          },
+          getData: function() {
+            // pata thamani ya sasa ya `data`
+            return data;
+          },
+          setData: function( value ) {
+            // weka thamani ya `data` na urudishe
+            return ( data = value );
+          }
+        };
+      })();
+
+      // Mambo mengine yanaweza kutokea hapa
+
+      // wazi moduli yetu kwa kitu cha global
+      global.Module = Module;
+
+    })( this );
+
+    ```
+
+    ```javascript
+
+    // 5.2.1
+    // Mjenzi wa Vitendo
+
+    (function( global ) {
+
+      function Ctor( foo ) {
+
+        this.foo = foo;
+
+        return this;
+      }
+
+      Ctor.prototype.getFoo = function() {
+        return this.foo;
+      };
+
+      Ctor.prototype.setFoo = function( val ) {
+        return ( this.foo = val );
+      };
+
+
+      // Ili kuita waumbaji bila `new`, unaweza kufanya hivi:
+      var ctor = function( foo ) {
+        return new Ctor( foo );
+      };
+
+
+      // wazi mjenzi wetu kwa kitu cha global
+      global.ctor = ctor;
+
+    })( this );
+
+    ```
+
 
 
 
