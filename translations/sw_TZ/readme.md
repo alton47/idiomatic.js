@@ -256,6 +256,166 @@ Sehemu zifuatazo zinapanga _mwongozo wa mtindo_ wa maendeleo ya JavaScript wa ki
     // ambazo zinaweza kuwa globali zisizo na majina.
     // Chagua bora kwa mradi wako na kamwe usizichanganye.
 
+    // Mbaya
+    var foo = "",
+      bar = "";
+    var qux;
+
+    // Bora
+    var foo = "";
+    var bar = "";
+    var qux;
+
+    // au..
+    var foo = "",
+      bar = "",
+      qux;
+
+    // au..
+    var // Maelezo kuhusu haya
+    foo = "",
+    bar = "",
+    quux;
+
+    // 2.B.1.3
+    // Matangazo ya var yanapaswa kuwa kila wakati mwanzoni mwa scope yao husika (function).
+
+
+    // Mbaya
+    function foo() {
+
+      // baadhi ya maelekezo hapa
+
+      var bar = "",
+        qux;
+    }
+
+    // Bora
+    function foo() {
+      var bar = "",
+        qux;
+
+      // maelekezo yote baada ya matangazo ya variables.
+    }
+
+    // 2.B.1.4
+    // const na let, kutoka ECMAScript 6, pia inapaswa kuwa juu ya scope yao (block).
+
+    // Mbaya
+    function foo() {
+      let foo,
+        bar;
+      if ( condition ) {
+        bar = "";
+        // maelekezo
+      }
+    }
+    // Bora
+    function foo() {
+      let foo;
+      if ( condition ) {
+        let bar = "";
+        // maelekezo
+      }
+    }
+    ```
+
+    ```javascript
+
+    // 2.B.2.1
+    // Tangazo la Kazi Iliyotajwa kwa Jina
+    function foo( arg1, argN ) {
+
+    }
+
+    // Matumizi
+    foo( arg1, argN );
+
+
+    // 2.B.2.2
+    // Tangazo la Kazi Iliyotajwa kwa Jina
+    function square( number ) {
+      return number * number;
+    }
+
+    // Matumizi
+    square( 10 );
+
+    // Mtindo wa mfuatano wa kuvuruga
+    function square( number, callback ) {
+      callback( number * number );
+    }
+
+    square( 10, function( square ) {
+      // maelekezo ya callback
+    });
+
+
+    // 2.B.2.3
+    // Kazi ya Kielelezo
+    var square = function( number ) {
+      // Rudisha kitu cha thamani na muhimu
+      return number * number;
+    };
+
+    // Kielelezo cha Kazi kilicho na Kitambulisho
+    // Huu ni mtindo unaopendelea kwa sababu una
+    // uwezo wa kuita mwenyewe na kuwa na utambulisho kwenye traces za stack:
+    var factorial = function factorial( number ) {
+      if ( number < 2 ) {
+        return 1;
+      }
+
+      return number * factorial( number - 1 );
+    };
+
+
+    // 2.B.2.4
+    // Tangazo la Kituo
+    function FooBar( options ) {
+
+      this.options = options;
+    }
+
+    // Matumizi
+    var fooBar = new FooBar({ a: "alpha" });
+
+    fooBar.options;
+    // { a: "alpha" }
+
+    ```
+
+
+    C. Matukio, Mabadiliko Madogo
+
+    ```javascript
+
+    // 2.C.1.1
+    // Kazi zenye callbacks
+    foo(function() {
+      // Kumbuka hakuna nafasi ya ziada kati ya paren ya kwanza
+      // ya kuita kazi inayotekelezwa na neno "function"
+    });
+
+    // Kazi inayokubali orodha, hakuna nafasi
+    foo([ "alpha", "beta" ]);
+
+    // 2.C.1.2
+    // Kazi inayokubali kitu, hakuna nafasi
+    foo({
+      a: "alpha",
+      b: "beta"
+    });
+
+    // Neno moja la maandishi, hakuna nafasi
+    foo("bar");
+
+    // Parens za hisia, hakuna nafasi
+    if ( !("foo" in obj) ) {
+      obj = (obj.bar || defaults).baz;
+    }
+
+    ```
 
 
 
