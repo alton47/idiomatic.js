@@ -80,5 +80,75 @@
 
 ### Zana za Ubora wa Msimbo, Rasilimali & Marejeleo
 
+ * [SonarQube](https://www.sonarqube.org/)
+ * [Plato](https://github.com/es-analysis/plato)
+ * [jsPerf](http://jsperf.com/)
+ * [jsFiddle](http://jsfiddle.net/)
+ * [Codepen](http://codepen.io/)
+ * [jsbin](http://jsbin.com/)
+ * [JavaScript Lint (JSL)](http://javascriptlint.com/)
+ * [jshint](http://jshint.com/)
+ * [jslint](http://jslint.org/)
+ * [eslint](http://eslint.org/)
+ * [jscs](https://www.npmjs.org/package/jscs)
+ * [jscodesniffer](https://www.npmjs.org/package/jscodesniffer)
+ * [Editorconfig](http://editorconfig.org/)
+ * [Hound](https://houndci.com/)
+
+## Pata Akili
+
+### [ECMAScript 5.1 Iliyotolewa Maelezo](http://es5.github.com/)
+### [Mafasili ya Lugha ya EcmaScript, Toleo la 5.1](http://ecma-international.org/ecma-262/5.1/)
+
+Ifuatayo inapaswa kuzingatiwa 1) kutokamilika, na 2) *USOMAJI WA KINAHITAJIKA*. Siwahi kukubaliana na mtindo ulioandikwa na waandishi walio chini, lakini jambo moja ni hakika: Wanakuwa na mfuatano. Zaidi ya hayo, hawa ni wataalamu wa lugha hiyo.
+
+ * [Msingi Kwa Wataalamu wa Front End: 2015](https://rmurphey.com/posts/a-baseline-for-front-end-developers-2015/)
+ * [JavaScript ya Kimapambo](http://eloquentjavascript.net/)
+ * [JavaScript, JavaScript](http://javascriptweblog.wordpress.com/)
+ * [Mambo ya Maendeleo ya JavaScript](http://rmurphey.com/)
+ * [Perfekta Inaua](http://perfectionkills.com/)
+ * [Douglas Crockford's Wrrrld Wide Web](http://www.crockford.com)
+ * [Tathmini ya JS](https://github.com/rmurphey/js-assessment)
+
+### Mchakato wa Kujenga & Uwekaji
+
+Miradi inapaswa daima kujitahidi kujumuisha njia yoyote ya jumla kwa njia ambayo chanzo kinaweza kupimwa, kupimwa na kubanwa kwa maandalizi ya matumizi ya uzalishaji. Kwa kazi hii, [grunt](https://github.com/gruntjs/grunt) ya Ben Alman ni bora zaidi na imebadilisha rasmi "kits/" direktorii ya repo hii.
+
+### Kituo cha Majaribio
+
+Miradi _lazima_ ijumuishe aina yoyote ya majaribio ya kitengo, rejea, utekelezaji au majaribio ya kifunctional. Maonyesho ya matumizi HAYAHUSIANI kama "majaribio". Ifuatayo ni orodha ya mifumo ya majaribio, hakuna kati yao inayoungwa mkono zaidi kuliko nyingine.
+
+ * [QUnit](http://github.com/jquery/qunit)
+ * [Jasmine](https://github.com/pivotal/jasmine)
+ * [Vows](https://github.com/cloudhead/vows)
+ * [Mocha](https://github.com/visionmedia/mocha)
+ * [Hiro](http://hirojs.com/)
+ * [JsTestDriver](https://code.google.com/p/js-test-driver/)
+ * [Buster.js](http://busterjs.org/)
+ * [Sinon.js](http://sinonjs.org/)
+ * [Tape](https://github.com/substack/tape)
+ * [Jest](https://facebook.github.io/jest/)
+
+## Jedwali la Maudhui
+
+ * [Nafasi Nyeupe](#whitespace)
+ * [Sintaksia Nzuri](#spacing)
+ * [Uhakiki wa Aina (Kwa hisani ya miongozo ya Mtindo wa Core ya jQuery)](#type)
+ * [Tathmini ya Masharti](#cond)
+ * [Mtindo wa Vitendo](#practical)
+ * [Majina](#naming)
+ * [Mambo Mengine](#misc)
+ * [Vitu vya Asili & Vitu vya Mgeni](#native)
+ * [Maoni](#comments)
+ * [Msimbo wa Lugha Moja](#language)
+
+
+
+------------------------------------------------
+
+
+
+
+
 
 
