@@ -1,5 +1,8 @@
 # Misingi ya Kuandika JavaScript Inayofanana na Kawaida
 
+<!-- * Allan Alton [@AllanAlton5](https://x.com/AllanAlton5), [github](https://github.com/alton47)
+Added Swahili translation of the Idiomatic.js guide 
+This PR adds a Swahili translation of the Idiomatic.js guide, located in the translations folder. -->
 
 ## Hii ni nyaraka inayoendelea, na mawazo mapya ya kuboresha msimbo yanakaribishwa kila wakati. Changia: fork, clone, branch, commit, push, pull request.
 
